@@ -1,0 +1,56 @@
+api id- ed51a0ef
+key- d35c62936b8002a6e5a7b51f5d099a40
+
+
+ "https://api.edamam.com/search?q=chicken&app_id=ed51a0ef&app_key=d35c62936b8002a6e5a7b51f5d099a40"
+
+
+
+
+const [items, setitems] = useState([])
+
+    let getRecipe = async () => {
+
+
+
+
+        let res = await axios.get("https://api.edamam.com/search?q=cake&app_id=ed51a0ef&app_key=d35c62936b8002a6e5a7b51f5d099a40"
+        )
+        console.log(res.data.hits)
+        setitems(res.data.hits)
+
+    }
+
+
+    useEffect(() => {
+        getRecipe()
+
+
+    }, [])
+
+
+
+
+
+      <div className='row justify-content-center gap-3 m-0 p-0'> 
+            {
+                items.map((ele, index) => {
+                    return <div className="card" style={{ width: '18rem' }}>
+                        <img src={ele.recipe.image} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">{ele.recipe.label}</h5>
+                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">view details</a>
+                           
+                        </div>
+                    </div>
+
+             
+            })
+
+            }
+        
+            
+           
+
+        </div >
